@@ -1,0 +1,1905 @@
+openapi: 3.0.1
+info:
+  title: Party Reference Data Directory
+  description: 'This service domain maintains a range of party reference information covering aspects including general reference details, contacts and associations and demographic information'
+  contact:
+    name: BIAN
+    url: https://bian.org
+  version: 14.0.0
+servers:
+  - url: https://virtserver.swaggerhub.com/B154/BIAN/PartyReferenceDataDirectory/14.0.0
+paths:
+  '/v2/party-reference-data-directory/{partyreferencedatadirectoryid}/core-party-profile/register':
+    post:
+      tags:
+        - BQ - CorePartyProfile
+      summary: RgBQ Register a customer core profile in catalog
+      description: RgBQ Register a customer core profile in catalog
+      operationId: RegisterCorePartyProfile
+      parameters:
+        - $ref: '#/components/parameters/partyreferencedatadirectoryid'
+      requestBody:
+        $ref: '#/components/requestBodies/CorePartyProfile'
+      responses:
+        '200':
+          $ref: '#/components/responses/CorePartyProfile'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  '/v2/party-reference-data-directory/directory-record/execute':
+    post:
+      tags:
+        - BQ - DirectoryRecord
+      summary: Complex search for customers with dynamic filters
+      description: Complex search for customers using any field path in the document. Use pageSize and pageToken query parameters for pagination.
+      operationId: RegisterDirectoryRecord
+      parameters:
+        - $ref: '#/components/parameters/pageToken'
+        - $ref: '#/components/parameters/pageSize'
+      requestBody:
+        $ref: '#/components/requestBodies/DirectoryRecord'
+      responses:
+        '200':
+          $ref: '#/components/responses/DirectoryRecord'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  '/v2/party-reference-data-directory/register':
+    post:
+      tags:
+        - CR - PartyReferenceDataDirectoryEntry
+      summary: InCR Register a customer entity in the catalog
+      description: InCR Register a customer entity in the catalog
+      operationId: Register
+      requestBody:
+        $ref: '#/components/requestBodies/PartyReferenceDataDirectoryEntry'
+      responses:
+        '200':
+          $ref: '#/components/responses/PartyReferenceDataDirectoryEntry'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  '/v2/party-reference-data-directory/{party-reference-data-directory-id}/control':
+    put:
+      tags:
+        - CR - PartyReferenceDataDirectoryEntry
+      summary: CoCR Control the handling of a customer entry (e.g. terminate)
+      description: CoCR Control the handling of a customer entry (e.g. terminate)
+      operationId: Control
+      parameters:
+        - $ref: '#/components/parameters/party-reference-data-directory-id'
+      requestBody:
+        $ref: '#/components/requestBodies/PartyReferenceDataDirectoryEntry'
+      responses:
+        '200':
+          $ref: '#/components/responses/PartyReferenceDataDirectoryEntry'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  '/v2/party-reference-data-directory/{partyreferencedatadirectoryid}/update':
+    put:
+      tags:
+        - CR - PartyReferenceDataDirectoryEntry
+      summary: UpCR Update details about the customer's directory entry
+      description: UpCR Update details about the customer's directory entry
+      operationId: Update
+      parameters:
+        - $ref: '#/components/parameters/partyreferencedatadirectoryid'
+      requestBody:
+        $ref: '#/components/requestBodies/PartyReferenceDataDirectoryEntry'
+      responses:
+        '200':
+          $ref: '#/components/responses/PartyReferenceDataDirectoryEntry'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  '/v2/party-reference-data-directory/{partyreferencedatadirectoryid}/retrieve':
+    get:
+      tags:
+        - CR - PartyReferenceDataDirectoryEntry
+      summary: ReCR Retrieve details about a customer directory entry
+      description: ReCR Retrieve details about a customer directory entry
+      operationId: Retrieve
+      parameters:
+        - $ref: '#/components/parameters/partyreferencedatadirectoryid'
+      responses:
+        '200':
+          $ref: '#/components/responses/PartyReferenceDataDirectoryEntry'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  '/v2/party-reference-data-directory/{party-reference-data-directory-id}/request':
+    put:
+      tags:
+        - CR - PartyReferenceDataDirectoryEntry
+      summary: RqCR Request manual intervention with an entry (e.g. refresh content)
+      description: RqCR Request manual intervention with an entry (e.g. refresh content)
+      operationId: Request
+      parameters:
+        - $ref: '#/components/parameters/party-reference-data-directory-id'
+      requestBody:
+        $ref: '#/components/requestBodies/PartyReferenceDataDirectoryEntry'
+      responses:
+        '200':
+          $ref: '#/components/responses/PartyReferenceDataDirectoryEntry'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  '/v2/party-reference-data-directory/{party-reference-data-directory-id}/execute':
+    put:
+      tags:
+        - CR - PartyReferenceDataDirectoryEntry
+      summary: ExCR Execute an automated action against an entry
+      description: ExCR Execute an automated action against an entry
+      operationId: Execute
+      parameters:
+        - $ref: '#/components/parameters/party-reference-data-directory-id'
+      requestBody:
+        $ref: '#/components/requestBodies/PartyReferenceDataDirectoryEntry'
+      responses:
+        '200':
+          $ref: '#/components/responses/PartyReferenceDataDirectoryEntry'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  '/v2/party-reference-data-directory/{partyreferencedatadirectoryid}/demographics/{demographicsid}/exchange':
+    put:
+      tags:
+        - BQ - Demographics
+      summary: 'EcBQ Accept, verify, reject etc. details of a customer directory entry'
+      description: 'EcBQ Accept, verify, reject etc. details of a customer directory entry'
+      operationId: ExchangeDemographics
+      parameters:
+        - $ref: '#/components/parameters/partyreferencedatadirectoryid'
+        - $ref: '#/components/parameters/demographicsid'
+      requestBody:
+        $ref: '#/components/requestBodies/Demographics'
+      responses:
+        '200':
+          $ref: '#/components/responses/Demographics'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  '/v2/party-reference-data-directory/{partyreferencedatadirectoryid}/reference/{referenceid}/update':
+    put:
+      tags:
+        - BQ - Reference
+      summary: UpBQ Update details about a reference entry for the customer
+      description: UpBQ Update details about a reference entry for the customer
+      operationId: UpdateReference
+      parameters:
+        - $ref: '#/components/parameters/partyreferencedatadirectoryid'
+        - $ref: '#/components/parameters/referenceid'
+      requestBody:
+        $ref: '#/components/requestBodies/Reference'
+      responses:
+        '200':
+          $ref: '#/components/responses/Reference'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  '/v2/party-reference-data-directory/{partyreferencedatadirectoryid}/reference/{referenceid}/retrieve':
+    get:
+      tags:
+        - BQ - Reference
+      summary: ReBQ Retrieve details about reference entries in the directory
+      description: ReBQ Retrieve details about reference entries in the directory
+      operationId: RetrieveReference
+      parameters:
+        - $ref: '#/components/parameters/partyreferencedatadirectoryid'
+        - $ref: '#/components/parameters/referenceid'
+      responses:
+        '200':
+          $ref: '#/components/responses/Reference'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  '/v2/party-reference-data-directory/{partyreferencedatadirectoryid}/associations/{associationsid}/retrieve':
+    get:
+      tags:
+        - BQ - Associations
+      summary: ReBQ Retrieve details about association entries in the directory record
+      description: ReBQ Retrieve details about association entries in the directory record
+      operationId: RetrieveAssociations
+      parameters:
+        - $ref: '#/components/parameters/partyreferencedatadirectoryid'
+        - $ref: '#/components/parameters/associationsid'
+      responses:
+        '200':
+          description: Associations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Associations'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  '/v2/party-reference-data-directory/{partyreferencedatadirectoryid}/associations/{associationsid}/update':
+    put:
+      tags:
+        - BQ - Associations
+      summary: UpBQ Update details about an association entry for the customer
+      description: UpBQ Update details about an association entry for the customer
+      operationId: UpdateAssociations
+      parameters:
+        - $ref: '#/components/parameters/partyreferencedatadirectoryid'
+        - $ref: '#/components/parameters/associationsid'
+      requestBody:
+        $ref: '#/components/requestBodies/Associations'
+      responses:
+        '200':
+          $ref: '#/components/responses/Associations'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  '/v2/party-reference-data-directory/{partyreferencedatadirectoryid}/demographics/{demographicsid}/update':
+    put:
+      tags:
+        - BQ - Demographics
+      summary: UpBQ Update details about a customer's demographic entry
+      description: UpBQ Update details about a customer's demographic entry
+      operationId: UpdateDemographics
+      parameters:
+        - $ref: '#/components/parameters/partyreferencedatadirectoryid'
+        - $ref: '#/components/parameters/demographicsid'
+      requestBody:
+        $ref: '#/components/requestBodies/Demographics'
+      responses:
+        '200':
+          $ref: '#/components/responses/Demographics'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  '/v2/party-reference-data-directory/{partyreferencedatadirectoryid}/demographics/{demographicsid}/retrieve':
+    get:
+      tags:
+        - BQ - Demographics
+      summary: ReBQ Retrieve details about customer demographics entries in the directory
+      description: ReBQ Retrieve details about customer demographics entries in the directory
+      operationId: RetrieveDemographics
+      parameters:
+        - $ref: '#/components/parameters/partyreferencedatadirectoryid'
+        - $ref: '#/components/parameters/demographicsid'
+      responses:
+        '200':
+          $ref: '#/components/responses/Demographics'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  '/v2/party-reference-data-directory/{partyreferencedatadirectoryid}/bank-relations/{bankrelationsid}/update':
+    put:
+      tags:
+        - BQ - BankRelations
+      summary: UpBQ Update details about a customer's bank relations entry for the customer
+      description: UpBQ Update details about a customer's bank relations entry for the customer
+      operationId: UpdateBankRelations
+      parameters:
+        - $ref: '#/components/parameters/partyreferencedatadirectoryid'
+        - $ref: '#/components/parameters/bankrelationsid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/BankRelations'
+      responses:
+        '200':
+          description: BankRelations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BankRelations'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  '/v2/party-reference-data-directory/{partyreferencedatadirectoryid}/bank-relations/{bankrelationsid}/retrieve':
+    get:
+      tags:
+        - BQ - BankRelations
+      summary: ReBQ Retrieve details about customer bank relations entries in the directory
+      description: ReBQ Retrieve details about customer bank relations entries in the directory
+      operationId: RetrieveBankRelations
+      parameters:
+        - $ref: '#/components/parameters/partyreferencedatadirectoryid'
+        - $ref: '#/components/parameters/bankrelationsid'
+      responses:
+        '200':
+          description: BankRelations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BankRelations'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  '/v2/party-reference-data-directory/{partyreferencedatadirectoryid}/associations/register':
+    post:
+      tags:
+        - BQ - Associations
+      summary: Capture Association Details
+      description: Capture Association Details
+      operationId: RegisterAssociations
+      parameters:
+        - $ref: '#/components/parameters/partyreferencedatadirectoryid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Associations'
+      responses:
+        '200':
+          description: Associations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Associations'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+components:
+  schemas:
+    HTTPError:
+      type: object
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+          format: int32
+        detail:
+          type: string
+        instance:
+          type: string
+        timestamp:
+          type: string
+        error:
+          type: string
+        path:
+          type: string
+        status_code:
+          type: integer
+          format: int32
+        message:
+          type: string
+      additionalProperties: true
+      description: Error response returned by the service (Spring ProblemDetail / default error / handled error).
+    Partytypevalues:
+      enum:
+        - Person
+        - Organisation
+      type: string
+      description: 'Type of party (Person or Organisation)'
+    Partylegalstructuretypevalues:
+      enum:
+        - Individual
+        - CommunityInterestCompany
+        - CharitableIncorporatedOrganisation
+        - Co-Operative
+        - Charity
+        - GeneralPartnership
+        - LimitedLiabilityPartnership
+        - ScottishLimitedPartnership
+        - LimitedPartnership
+        - PrivateLimitedCompany
+        - PublicLimitedCompany
+        - Sole(SoleTrader)
+      type: string
+      description: 'Type of party legal structure'
+    Partyidentificationtypevalues:
+      enum:
+        - Taxidentificationnumber
+        - Nationalregistrationnumber
+        - Registrationauthorityidentification
+        - LEI(LegalEntityIdentifier)
+        - Alienregistrationnumber
+        - Passportnumber
+        - Taxexemptidentificationnumber
+        - Corporateidentification
+        - Driverlicensenumber
+        - Foreigninvestmentidentitynumber
+        - Customeridentificationnumber
+        - Coreidentificationnumber
+        - Socialsecuritynumber
+        - Identitycardnumber
+        - Concat
+        - Nationalregistrationidentificationnumber
+      type: string
+      description: 'Type of party identification'
+    Partyidentification:
+      type: object
+      properties:
+        PartyIdentificationType:
+          $ref: '#/components/schemas/Partyidentificationtypevalues'
+        PartyIdentification:
+          $ref: '#/components/schemas/Identifier'
+      description: ''
+    Party:
+      type: object
+      properties:
+        PartyName:
+          $ref: '#/components/schemas/Name'
+        PartyType:
+          $ref: '#/components/schemas/Partytypevalues'
+        PartyDateTime:
+          $ref: '#/components/schemas/Datetime'
+        PartyIdentification:
+          type: array
+          items:
+            $ref: '#/components/schemas/Partyidentification'
+        PartyLegalStructureType:
+          $ref: '#/components/schemas/Partylegalstructuretypevalues'
+      description: Reference to the associated customer (can be a person or a company)
+    Productserviceagreementinvolvementtypevalues:
+      enum:
+        - Principal
+        - SecondaryOwner
+        - Beneficiary
+        - PowerOfAttorney
+        - LegalGuardian
+        - CustodianForMinor
+        - SuccessorOnDeath
+        - Administrator
+        - OtherParty
+        - Granter
+        - Settlor
+        - SeniorManagingOfficial
+        - Protector
+        - RegisteredShareholderName
+      type: string
+      description: 'Type of product/service agreement involvement'
+    NameInformation:
+      type: object
+      properties:
+        FirstName:
+          type: string
+        MiddleName:
+          type: string
+        LastName:
+          type: string
+        FullName:
+          type: string
+      description: 'Structured name information for a party'
+    Involvedparty:
+      type: object
+      properties:
+        PartyReference:
+          type: string
+          description: Reference to a Party who plays a specific role
+          format: Text
+        InvolvementReference:
+          type: string
+          description: Reference to a specific Role that is played by a Party
+          format: Text
+      description: Reference to the customer's employer (company name)
+    Demographics:
+      type: object
+      properties:
+        Socio-EconomicClassification:
+          type: string
+          description: A bank defined classification of the socio-economic rating and prospect
+          format: Text
+        Ethnicity:
+          type: string
+          description: Where needed to ensure the bank's handling of the relationship follows legal and regulatory requirements
+          format: Text
+        Religion:
+          type: string
+          description: Where needed to ensure the bank's handling of the relationship follows legal and regulatory requirements
+          format: Text
+        Employment:
+          $ref: '#/components/schemas/Involvedparty'
+        EmploymentHistory:
+          type: string
+          description: 'Details of the customer''s employment history (e.g. employer, dates, job position, salary)'
+          format: Text
+        EducationHistory:
+          type: string
+          description: 'Customer''s education (e.g. academic institutions attended, duration, qualifications and certifications)'
+          format: Text
+        ServicingConstraints:
+          type: string
+          description: 'Description of any known constraints on servicing the customer (sight, hearing, religious considerations)'
+          format: Text
+      description: "\"An assertion or statement with regard to a concept, a characteristic.\n\nExamples: Product pricing rules, Customer reference details\n\nA descriptor can be atomic or composed.\"\nProspect Management"
+    Party_Partyrelationshiptypevalues:
+      enum:
+        - PartyIsParentOfParty
+        - PartyIsSubsidiaryOfParty
+        - PartyIsCertifiedByParty
+        - PartyIsMarriedToParty
+        - PartyActsOnBehalfOfParty
+        - PartyIsContactPointForParty
+        - PartyIsTrustedByParty
+        - PartyIsThePowerOfAttorneyForParty
+        - PartyReceivesBenefitsFromAParty
+      type: string
+      description: ">\r\n* `PartyIsParentOfParty` - \r\n* `PartyIsSubsidiaryOfParty` - \r\n* `PartyIsCertifiedByParty` - \r\n* `PartyIsMarriedToParty` - \r\n* `PartyActsOnBehalfOfParty` - \r\n* `PartyIsContactPointForParty` - \r\n* `PartyIsTrustedByParty` - \r\n* `PartyIsThePowerOfAttorneyForParty` - \r\n* `PartyReceivesBenefitsFromAParty` - \r\n"
+    Subject:
+      type: object
+      properties:
+        Subject:
+          type: string
+          description: A thing that is discussed or dealt whit in agreement/arrangement about doing or not doing (as action) something.
+          format: Class
+      description: ''
+    Arrangementtypevalues:
+      enum:
+        - SweepArrangement
+        - WithdrawalArrangement
+        - DepositArrangement
+        - InterestArrangement
+        - FeeArrangement
+        - LienArrangement
+        - InformationArrangement
+        - PaymentArrangement
+        - EntitlementArrangement
+        - PeriodArrangement
+        - CollateralArrangement
+        - LimitArrangement
+        - AccessArrangement
+        - CardPaymentArrangement
+        - StandingOrderArrangement
+        - OverdraftArrangement
+        - RepaymentArrangement
+        - StatementArrangement
+        - CreditTransferArrangement
+        - ProductAndServiceArrangement
+        - FactoringArrangement
+        - RolloverArrangement
+        - RestructuringArrangement
+        - InsuranceArrangement
+        - CollectionArrangement
+        - UnderwritingArrangement
+        - TerminationArrangement
+        - MaturityArrangement
+        - AdministrativeArrangement
+      type: string
+      description: ">\r\n* `SweepArrangement` - An arrangement into which is promised for the set-up and execution of structured sweeps to and from the facility to a linked account.\r\n* `WithdrawalArrangement` - An arrangement into which is promised to deliver Withdraw Service  to take fund out of an account. \r\n* `DepositArrangement` - An arrangement into which is promised to deliver Deposit Service  to place funds into an account for safekeeping. \r\n* `InterestArrangement` - An arrangement into which is promised to apply a pricing element expressed in a percentage  to a principal amount.\r\n* `FeeArrangement` - An arrangement into which is promised to apply a charge for services rendered. \r\n* `LienArrangement` - An arrangement into which is promised for placing a lien or block on the account for a specified purpose, amount, and period. \r\n* `InformationArrangement` - An arrangement concerning the information the bank will provide about the agreement/account\r\n* `PaymentArrangement` - An arrangement into which is promised to deliver a specific payment service including regular payments, standing orders, direct debits and bill pay instructions. \r\n* `EntitlementArrangement` - Right or obligation linked to the involvement of a party in an agreement\r\n* `PeriodArrangement` - \r\n* `CollateralArrangement` - An arrangement into which is promised for handling the oversight of the allocation, valuation and administration of collateral associated with the facility. \r\n* `LimitArrangement` - An arrangement to limit something\ne.g., the number of transaction per week, the amount of money allowed to withdraw per week/day and etc. \r\n* `AccessArrangement` - An arrangement that allows or restricts the access to a service or product, channel or device through a specific access point\r\n* `CardPaymentArrangement` - An arrangement into which is promised to deliver Card payment Service to execute payment transactions through a payment card, including online payments. \r\n* `StandingOrderArrangement` - An arrangement into which is promised to deliver Standing Order Service to make regular transfers on given dates to a named beneﬁciary. \r\n* `OverdraftArrangement` - An arrangement into which is promised to deliver Overdraft Service  that allows fund transfer even if there is no provision on the account. \r\n* `RepaymentArrangement` - An arrangement into which is promised for paying back money previously borrowed from a lender. \r\n* `StatementArrangement` - An arrangement into which is promised to deliver a reporting service on payment transactions registered on an account. \r\n* `CreditTransferArrangement` - An arrangement into which is promised to allow a payer to transfer fund to a beneficiary. \r\n* `ProductAndServiceArrangement` - \r\n* `FactoringArrangement` - \r\n* `RolloverArrangement` - Arrangement stipulating the modalities for an automatic renewal of the agreement\n\ni.e. the replacement of the agreement with a new one without renewed negociation and witout explicit agreement of the customer \r\n* `RestructuringArrangement` - \r\n* `InsuranceArrangement` - \r\n* `CollectionArrangement` - An arrangement into which is promised to collect past-due debts from borrowers\r\n* `UnderwritingArrangement` - A contractual agreement between parties that commits the underwriter to assuming risk.\r\n* `TerminationArrangement` - \r\n* `MaturityArrangement` - \r\n* `AdministrativeArrangement` - \r\n"
+    Modalitytypevalues:
+      enum:
+        - AllocationModality
+        - CalculationModality
+        - DerivationModality
+        - PaymentModality
+        - ProcessingModality
+        - ApplicationModality
+        - DeliveryModality
+      type: string
+      description: ">\r\n* `AllocationModality` - \r\n* `CalculationModality` - \r\n* `DerivationModality` - \r\n* `PaymentModality` - \r\n* `ProcessingModality` - \r\n* `ApplicationModality` - \r\n* `DeliveryModality` - \r\n"
+    Servicearrangementmodality:
+      type: object
+      properties:
+        ServiceArrangementModalityType:
+          $ref: '#/components/schemas/Modalitytypevalues'
+      description: ''
+    Actiontypevalues:
+      enum:
+        - Initiate
+        - Execute
+        - Create
+        - Transfer
+        - Pay
+        - Deliver
+        - Apply
+        - Calculate
+      type: string
+      description: ">\r\n* `Initiate` - \r\n* `Execute` - \r\n* `Create` - \r\n* `Transfer` - \r\n* `Pay` - \r\n* `Deliver` - \r\n* `Apply` - \r\n* `Calculate` - \r\n"
+    Datetimetypevalues:
+      enum:
+        - MaturityDate
+        - InitiatedDate
+        - RequestedDate
+        - ExecutedDate
+        - OpenDate
+        - CloseDate
+        - ExpiryDate
+        - EffectiveDate
+        - CreatingDate
+        - ActivationDate
+        - DeactivationDate
+        - BlockingDate
+        - SendingDate
+        - ValidFromDate
+        - ValidToDate
+        - ReceivingDate
+        - SigningDate
+        - DueDate
+        - ValueDate
+        - FulfillmentDate
+        - EntryDate
+      type: string
+      description: ">\r\n* `MaturityDate` - \r\n* `InitiatedDate` - \r\n* `RequestedDate` - \r\n* `ExecutedDate` - \r\n* `OpenDate` - \r\n* `CloseDate` - \r\n* `ExpiryDate` - \r\n* `EffectiveDate` - \r\n* `CreatingDate` - \r\n* `ActivationDate` - \r\n* `DeactivationDate` - \r\n* `BlockingDate` - \r\n* `SendingDate` - \r\n* `ValidFromDate` - \r\n* `ValidToDate` - \r\n* `ReceivingDate` - \r\n* `SigningDate` - \r\n* `DueDate` - \r\n* `ValueDate` - \r\n* `FulfillmentDate` - \r\n* `EntryDate` - \r\n"
+    Datetime:
+      type: object
+      properties:
+        DateTimeContent:
+          type: string
+          description: The particular date and time point in the progression of time
+          format: Text
+        TimeZoneCode:
+          type: string
+          description: The time zone to which the date time refers.
+          format: Text
+        DaylightSavingIndicator:
+          type: string
+          description: ''
+          format: Text
+        DateTimeType:
+          $ref: '#/components/schemas/Datetimetypevalues'
+      description: ''
+    Datetimeperiod:
+      type: object
+      properties:
+        FromDateTime:
+          $ref: '#/components/schemas/Datetime'
+        ToDateTime:
+          $ref: '#/components/schemas/Datetime'
+      description: Period of time during which the status is valid.
+    Status:
+      type: object
+      properties:
+        StatusReason:
+          type: string
+          description: Specifies the reasons for the status.
+          format: Text
+        StatusDateTime:
+          $ref: '#/components/schemas/Datetime'
+        StatusValidityPeriod:
+          $ref: '#/components/schemas/Datetimeperiod'
+        StatusInvolvedPartyReference:
+          $ref: '#/components/schemas/Involvedparty'
+      description: 'The tracked status (e.g. under construction or repair, inhabited, vacant).'
+    Geographicalareatypevalues:
+      enum:
+        - Continent
+        - Country
+        - State
+        - District
+        - Province
+        - Town
+        - City
+        - Region
+      type: string
+      description: ">\r\n* `Continent` - \r\n* `Country` - \r\n* `State` - \r\n* `District` - \r\n* `Province` - \r\n* `Town` - \r\n* `City` - \r\n* `Region` - \r\n"
+    Identifier:
+      type: object
+      properties:
+        IdentifierValue:
+          type: string
+          description: 'tThe actual unique code or number (e.g., passport number, drivers license number).'
+          format: Value
+        IdentifierIssuerReference:
+          $ref: '#/components/schemas/Involvedparty'
+        IdentifierStartDate:
+          $ref: '#/components/schemas/Datetime'
+        IdentifierEndDate:
+          $ref: '#/components/schemas/Datetime'
+      description: ''
+    Name:
+      type: object
+      properties:
+        Name:
+          type: string
+          description: 'A name is a word or phrase that constitutes the distinctive designation of a person, place, thing or concept. (UN/CEFAT)'
+          format: DataType
+      description: Name (label) of the location. (ISO20022)
+    Location:
+      type: object
+      properties:
+        LocationDescription:
+          type: string
+          description: 'A description of the property, particularly if it has landmark characteristics.'
+          format: Text
+        LocationDateTime:
+          $ref: '#/components/schemas/Datetime'
+        LocationStatus:
+          $ref: '#/components/schemas/Status'
+        LocationType:
+          $ref: '#/components/schemas/Geographicalareatypevalues'
+        LocationZoningType:
+          type: string
+          description: 'The planning or zoning status (e.g. residential, commercial, industrial).'
+          format: Text
+        LocationNeighborhoodType:
+          type: string
+          description: 'The general purpose and neighborhood of the property  (e.g. residential, industrial, commercial).'
+          format: Text
+        LocationConstructionType:
+          type: string
+          description: The construction approach for a property at the location (e.g. era and architecture as might be used in valuation).
+          format: Text
+        LocationOccupancyType:
+          type: string
+          description: 'The type of occupancy (e.g. residency, business, retail, entertainment).'
+          format: Text
+        LocationValue:
+          type: string
+          description: The estimated (book) value of the property at the location - rental and purchase as appropriate.
+          format: Value
+        LocationCapacity:
+          type: string
+          description: 'An indication of the size or scale of the property where appropriate (e.g. 4 bedroom, 600 seat auditorium, 40 cover restaurant).'
+          format: Text
+        LocationIdentification:
+          $ref: '#/components/schemas/Identifier'
+        LocationAddress:
+          type: string
+          description: Reference to the address of location
+          format: Text
+        LocationName:
+          $ref: '#/components/schemas/Name'
+        LocationTimeZone:
+          type: string
+          description: Local time zone.
+          format: Text
+      description: ''
+    Action:
+      type: object
+      properties:
+        ActionType:
+          $ref: '#/components/schemas/Actiontypevalues'
+        EventType:
+          type: string
+          description: ''
+          format: Text
+        EventDateTime:
+          $ref: '#/components/schemas/Datetime'
+        EventDescription:
+          type: string
+          description: ''
+          format: Text
+        EventSource:
+          type: string
+          description: ''
+          format: Object
+        EventLocation:
+          $ref: '#/components/schemas/Location'
+        EventAction:
+          $ref: '#/components/schemas/Action'
+        EventStatus:
+          $ref: '#/components/schemas/Status'
+        EventValue:
+          type: string
+          description: ''
+          format: Value
+        EventValidityPeriod:
+          $ref: '#/components/schemas/Datetimeperiod'
+        EventIdentification:
+          $ref: '#/components/schemas/Identifier'
+      description: ''
+    Arrangementstatustypevalues:
+      enum:
+        - Requested
+        - Proposed
+        - Offered
+        - Accepted
+        - Cancelled
+        - Fulfilled
+        - Terminated
+      type: string
+      description: ">\r\n* `Requested` - \r\n* `Proposed` - \r\n* `Offered` - \r\n* `Accepted` - \r\n* `Cancelled` - \r\n* `Fulfilled` - \r\n* `Terminated` - \r\n"
+    Arrangementstatus:
+      type: object
+      properties:
+        ArrangementStatus:
+          $ref: '#/components/schemas/Status'
+        ArrangementStatusType:
+          $ref: '#/components/schemas/Arrangementstatustypevalues'
+      description: 'A characteristic of arrangement which refers to the LifecycleStatus of arrangement (e.g., requested, proposed, offered, accepted, cancelled, terminated, fulfilled, etc.)'
+    Productfeaturetypevalues:
+      enum:
+        - Bankingservice
+        - Administrationservice
+        - Accessservice
+        - Pricefeature
+      type: string
+      description: ">\r\n* `Bankingservice` - A classification that distinguishes between instances of product features according to the core banking services, functionality and/or objectives of banking.\n\ne.g. deposit services, exchange services, etc.\n\nThe primary reason for the contract with the client are the banking services. These services can be classified as follows:\n1. Selling services\n2. Financial Instruments Exchange\n3. Financial Stock Management\n4. Financial Transfers\n5. Financial Risk Transfer\n6. Business Operating\n7. Advisory\n8. Reporting\n\n\r\n* `Administrationservice` - A classification that distinguishes between instances of product features according to administrative tasks related to the Banking Product or Service.\r\n* `Accessservice` - A classification that distinguishes between product features according to way of the banking services can be accessed.\n\nThe access to services becomes more and more important in the evolving markets. \nWe need to separate different parts:\n1. The physical access to the infrastructure that allows access to the bank (where)\n2. The authorization of different parties to use the services of the bank (who)\n3. The agreed procedure to have access to different services (how)\n4. The services that are available for the different parties (what)\n\r\n* `Pricefeature` - A classification that distinguishes between instances of product features according to the cost/profit that is related to Banking Products or Services.\n\nIn all commercial offerings, there is an agreed cost for both parties (e.g. the interest arrangements are in both directions). The pricing structure of products or packages is a service that gives the possibility to the client to adapt his costs to his individual situation.\nWe see different generic categories in the pricing structure of the different products.\n1. Compensations\n2. Prices\n3. Fees\n4. Discounts\r\n"
+    Productfeaturetype:
+      type: object
+      properties:
+        ProductFeatureTypeValues:
+          $ref: '#/components/schemas/Productfeaturetypevalues'
+      description: 'Reference to the product feature applied in this arrangement '
+    Currencycode:
+      type: object
+      properties:
+        Currencycode:
+          type: string
+          description: "A code identifying a currency according to ISO-4217.\nA currency is a system of money in general use in a particular country.\n\nCode allocated to a currency, by a maintenance agency, under an international identification scheme as described in the latest edition of the international standard ISO 4217 \"Codes for the representation of currencies and funds\". Valid currency codes are registered with the ISO 4217 Maintenance Agency, and consist of three contiguous letters. (ISO20022)\n\n"
+          format: DataType
+      description: ''
+    Amounttypevalues:
+      enum:
+        - Principal
+        - Actual
+        - Estimated
+        - Maximum
+        - Default
+        - Replacement
+        - Incremental
+        - Decremental
+        - Reserved
+        - Available
+        - Used
+        - DuePayable
+        - Minimum
+        - Open
+        - Unknown
+        - Fixed
+      type: string
+      description: ">\r\n* `Principal` - \r\n* `Actual` - Actual amount.\r\n* `Estimated` - Estimated amount (the final amount could be above or below).\r\n* `Maximum` - Maximum amount (the final amount must be less or equal).\r\n* `Default` - Default amount.\r\n* `Replacement` - Replacement amount.\r\n* `Incremental` - Incremental amount for reservation.\r\n* `Decremental` - Decremental amount for reservation.\r\n* `Reserved` - Reserved or updated reserved amount for reservation.\r\n* `Available` - \r\n* `Used` - \r\n* `DuePayable` - \r\n* `Minimum` - \r\n* `Open` - The amount is open.(ISO20022)\r\n* `Unknown` - The amount is unkown.(ISO20022)\r\n* `Fixed` - The amount represents a fixed value.(ISO20022)\r\n"
+    Amount:
+      type: object
+      properties:
+        AmountValue:
+          type: string
+          description: ''
+          format: Value
+        AmountCurrency:
+          $ref: '#/components/schemas/Currencycode'
+        DecimalPointPosition:
+          type: string
+          description: "Decimal point position starts calulating from the right\n"
+          format: Text
+        AmountType:
+          $ref: '#/components/schemas/Amounttypevalues'
+      description: ''
+    Duration:
+      type: object
+      properties:
+        Duration:
+          type: string
+          description: 'A duration is the specification of a length of time without a fixed start or end time, expressed in Gregorian calendar time units (Year, Month, Week, Day) and Hours, Minutes or Seconds. (UN/CEFACT)'
+          format: DataType
+      description: ''
+    PartyObligationOrEntitlement:
+      type: object
+      properties:
+        ObligationOrEntitlementSubject:
+          $ref: '#/components/schemas/Subject'
+        ObligationOrEntitlementType:
+          $ref: '#/components/schemas/Arrangementtypevalues'
+        ObligationOrEntitlementModality:
+          $ref: '#/components/schemas/Servicearrangementmodality'
+        ObligationOrEntitlementDefinition:
+          type: string
+          description: ''
+          format: Text
+        ArrangementAction:
+          $ref: '#/components/schemas/Action'
+        ArrangementStartDate:
+          $ref: '#/components/schemas/Datetime'
+        ArrangementEndDate:
+          $ref: '#/components/schemas/Datetime'
+        ArrangementStatus:
+          $ref: '#/components/schemas/Arrangementstatus'
+        ArrangementSubjectMatter:
+          $ref: '#/components/schemas/Subject'
+        Arrangementtype:
+          $ref: '#/components/schemas/Arrangementtypevalues'
+        ArrangementIdentification:
+          $ref: '#/components/schemas/Identifier'
+        SavingsAccountArrangementType:
+          $ref: '#/components/schemas/Arrangementtypevalues'
+        SavingsAccountArrangementProductFeatureType:
+          $ref: '#/components/schemas/Productfeaturetype'
+        TermDepositArrangementType:
+          $ref: '#/components/schemas/Arrangementtypevalues'
+        TermDepositArrangementProductFeatureType:
+          $ref: '#/components/schemas/Productfeaturetype'
+        TermDepositMaturityDate:
+          $ref: '#/components/schemas/Datetime'
+        TermDepositOpenDate:
+          $ref: '#/components/schemas/Datetime'
+        TermDepositAmount:
+          $ref: '#/components/schemas/Amount'
+        TermDepositDuration:
+          $ref: '#/components/schemas/Duration'
+        DepositTerm:
+          type: string
+          description: The Period for which the TermDepositAmount needs ti stay deposited with the Bank
+          format: String
+      description: Description of the rights or obligations granted to the associate
+    Productagreementtypevalues:
+      enum:
+        - CurrentAccountAgreement
+        - SavingsAccountAgreement
+        - BrokeredProductAgreement
+        - ConsumerLoanAgreement
+        - MortgageLoanAgreement
+        - DirectDebitServiceAgreement
+        - TermDepositAgreement
+      type: string
+      description: ">\r\n* `CurrentAccountAgreement` - \r\n* `SavingsAccountAgreement` - \r\n* `BrokeredProductAgreement` - \r\n* `ConsumerLoanAgreement` - \r\n* `MortgageLoanAgreement` - \r\n* `DirectDebitServiceAgreement` - \r\n* `TermDepositAgreement` - \r\n"
+    Date:
+      type: object
+      properties:
+        DateContent:
+          type: string
+          description: ''
+          format: Text
+      description: Date on which the agreement was signed by all parties. (ISO20022)
+    Agreementtypevalues:
+      enum:
+        - CustomerAgreement
+        - SupplierAgreement
+        - BrokerAgreement
+        - SalesAgreement
+        - PurchaseAgreement
+        - MaintenanceAgreement
+        - ProductAgreement
+        - ResourceAgreement
+        - PartnerAgreement
+        - MasterAgreement
+        - BilateralAgreement
+        - RepurchaseAgreement
+      type: string
+      description: ">\r\n* `CustomerAgreement` - \r\n* `SupplierAgreement` - \r\n* `BrokerAgreement` - \r\n* `SalesAgreement` - \r\n* `PurchaseAgreement` - \r\n* `MaintenanceAgreement` - \r\n* `ProductAgreement` - \r\n* `ResourceAgreement` - \r\n* `PartnerAgreement` - \r\n* `MasterAgreement` - \r\n* `BilateralAgreement` - \r\n* `RepurchaseAgreement` - \r\n"
+    Agreementstatustypevalues:
+      enum:
+        - Offered
+        - Confirmed
+        - Completed
+        - Signed
+        - Terminated
+        - Rejected
+      type: string
+      description: ">\r\n* `Offered` - \r\n* `Confirmed` - \r\n* `Completed` - \r\n* `Signed` - \r\n* `Terminated` - \r\n* `Rejected` - \r\n"
+    Agreementstatus:
+      type: object
+      properties:
+        AgreementStatus:
+          $ref: '#/components/schemas/Status'
+        AgreementStatusType:
+          $ref: '#/components/schemas/Agreementstatustypevalues'
+      description: 'A characteristic of agreement which refers to the LifecycleStatus of agreement (e.g., potential, offered, confirmed, completed, signed, terminated).'
+    ProductAgreement:
+      type: object
+      properties:
+        ProductAgreementType:
+          $ref: '#/components/schemas/Productagreementtypevalues'
+        ProductAgreementIdentification:
+          $ref: '#/components/schemas/Identifier'
+        AgreementSignedDate:
+          $ref: '#/components/schemas/Date'
+        AgreementType:
+          $ref: '#/components/schemas/Agreementtypevalues'
+        AgreementValidityPeriod:
+          $ref: '#/components/schemas/Datetimeperiod'
+        AgreementVersion:
+          type: string
+          description: ''
+          format: Text
+        AgreementStatus:
+          $ref: '#/components/schemas/Agreementstatus'
+        AgreementSubjectMatter:
+          type: string
+          description: ''
+          format: Text
+        AgreementIdentification:
+          $ref: '#/components/schemas/Identifier'
+        AgreementDate:
+          $ref: '#/components/schemas/Datetime'
+        AgreementDescription:
+          type: string
+          description: ''
+          format: Text
+      description: ''
+    ProductAgreementInvolvement:
+      type: object
+      properties:
+        InvolvementType:
+          $ref: '#/components/schemas/Productserviceagreementinvolvementtypevalues'
+        PartyReference:
+          $ref: '#/components/schemas/Party'
+        AgreementReference:
+          $ref: '#/components/schemas/ProductAgreement'
+      description: ''
+    Associations:
+      type: object
+      properties:
+        EmployeeReference:
+          $ref: '#/components/schemas/Involvedparty'
+        AssociateReference:
+          $ref: '#/components/schemas/Involvedparty'
+        AssociateType:
+          $ref: '#/components/schemas/Party_Partyrelationshiptypevalues'
+        AssociateObligationorDependencyDescription:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartyObligationOrEntitlement'
+        AssociationValidFromToDate:
+          $ref: '#/components/schemas/Datetimeperiod'
+        ProductInstanceReference:
+          $ref: '#/components/schemas/ProductAgreement'
+        PreferredBeneficiary:
+          $ref: '#/components/schemas/Involvedparty'
+        ProxyRepresentativePowerofAttorneyReference:
+          $ref: '#/components/schemas/PartyRelationship'
+        ProductInstanseInvolvementReference:
+          $ref: '#/components/schemas/ProductAgreementInvolvement'
+      description: 'Association details for a customer directory entry'
+    PartyRelationship:
+      type: object
+      properties:
+        RelationshipType:
+          type: string
+          description: ''
+          format: Text
+        RelationshipValidityPeriod:
+          $ref: '#/components/schemas/Datetimeperiod'
+        RelationshipStartDate:
+          $ref: '#/components/schemas/Datetime'
+        RelationshipEndDate:
+          $ref: '#/components/schemas/Datetime'
+        RelationshipLifecycleStatus:
+          $ref: '#/components/schemas/Status'
+        RelationshipIdentification:
+          $ref: '#/components/schemas/Identifier'
+      description: ''
+    BankRelations:
+      type: object
+      properties:
+        BankRelationType:
+          type: string
+          description: The type of relationship (e.g. relationship manager)
+          format: Text
+        BusinessUnitEmployeeReference:
+          $ref: '#/components/schemas/Involvedparty'
+        BankRelationReference:
+          $ref: '#/components/schemas/PartyRelationship'
+      description: 'Bank relations details for a customer directory entry'
+    Financialdocumenttypevalues:
+      enum:
+        - Meteredserviceinvoice
+        - Commercialinvoice
+        - Creditnote
+        - Debitnote
+        - Commercialcontract
+        - Statementofaccount
+        - Purchaseorder
+        - Voucher
+      type: string
+      description: 'Type of financial document'
+    Documentdatetimetypevalues:
+      enum:
+        - CreationDate
+        - CapturingDate
+        - VersionDate
+        - ValueDate
+        - IssueDate
+      type: string
+      description: 'Type of document date time'
+    Document:
+      type: object
+      properties:
+        DocumentIdentification:
+          $ref: '#/components/schemas/Identifier'
+        DocumentVersion:
+          type: string
+          description: ''
+          format: Number
+        DocumentType:
+          $ref: '#/components/schemas/Financialdocumenttypevalues'
+        DocumentStatus:
+          $ref: '#/components/schemas/Status'
+        DocumentDateTime:
+          $ref: '#/components/schemas/Datetime'
+        DocumentName:
+          $ref: '#/components/schemas/Name'
+        DocumentDateTimeType:
+          $ref: '#/components/schemas/Documentdatetimetypevalues'
+        DocumentPurpose:
+          type: string
+          description: Specifies the function of the document. (ISO20022)
+          format: Text
+        DocumentValidityPeriod:
+          $ref: '#/components/schemas/Datetimeperiod'
+      description: ''
+    Partydocumenttypevalues:
+      enum:
+        - WorkDocument
+        - CertificationDocument
+        - PersonalDocument
+      type: string
+      description: 'Type of party document'
+    PartyDocument:
+      type: object
+      properties:
+        PartyReference:
+          $ref: '#/components/schemas/Party'
+        DocumentReference:
+          $ref: '#/components/schemas/Document'
+        PartyDocumentType:
+          $ref: '#/components/schemas/Partydocumenttypevalues'
+      description: Details about and extracted from government issued documents (e.g. driving license/passport details)
+    Directoryentrydatetypevalues:
+      enum:
+        - OpenDate
+        - RefreshDate
+      type: string
+      description: 'Type of directory entry date'
+    DocumentDirectoryEntry:
+      type: object
+      properties:
+        DocumentDirectoryEntryIdentification:
+          type: string
+          description: Identification allowing the retrieval of a document from a Document Directory
+          format: String
+        DirectoryEntryDateType:
+          $ref: '#/components/schemas/Directoryentrydatetypevalues'
+        DirectoryEntryDate:
+          $ref: '#/components/schemas/Date'
+        DirectoryEntryStatus:
+          $ref: '#/components/schemas/Status'
+      description: The document reference for associated documents
+    Countrycode:
+      type: object
+      properties:
+        Countrycode:
+          type: string
+          description: 'Code to identify a country (ISO 3166, Alpha-2 code).'
+          format: DataType
+      description: Identifies a nation with its own government (ISO 3166).
+    Country:
+      type: object
+      properties:
+        NationalRegulatoryAuthority:
+          $ref: '#/components/schemas/Involvedparty'
+        CountryName:
+          $ref: '#/components/schemas/Name'
+        CountryCode:
+          $ref: '#/components/schemas/Countrycode'
+      description: The customer nationality and history as appropriate
+    Postaladdresstypevalues:
+      enum:
+        - Business
+        - Correspondence
+        - Deliveryto
+        - Mailto
+        - Pobox
+        - Postal
+        - Residential
+        - Statement
+      type: string
+      description: 'Type of postal address'
+    PostalAddress:
+      type: object
+      properties:
+        AddressType:
+          $ref: '#/components/schemas/Postaladdresstypevalues'
+        AddressLine:
+          type: string
+          description: 'Information that locates and identifies a specific address, presented in free format text.'
+          format: Text
+        StreetName:
+          $ref: '#/components/schemas/Name'
+        BuildingNumber:
+          type: string
+          description: Number that identifies the position of a building on a street.
+          format: Number
+        PostCode:
+          $ref: '#/components/schemas/Identifier'
+        TownName:
+          $ref: '#/components/schemas/Name'
+        CountrySubDivision:
+          $ref: '#/components/schemas/Geographicalareatypevalues'
+        Country:
+          $ref: '#/components/schemas/Country'
+        Department:
+          type: string
+          description: Identification of a division of a large organisation or building. (ISO20022)
+          format: Text
+        SubDepartment:
+          type: string
+          description: Identification of a sub-division of a large organisation or building. (ISO20022)
+          format: Text
+        AddressDescription:
+          type: string
+          description: ''
+          format: Text
+      description: Their given residential address
+    Contactpointtypevalues:
+      enum:
+        - ElectronicAddress
+        - PostalAddress
+        - PhoneNumber
+        - Socialnetworkaddress
+      type: string
+      description: 'Type of contact point'
+    Partylocationtypevalues:
+      enum:
+        - LocationIsResidentialAddressOfParty
+        - LocationIsDomicileAddressOfParty
+        - LocationIsPlaceOfBirthOfParty
+        - LocationIsWorkAddressOfParty
+        - LocationIsDeliveryPointAddressOfParty
+        - PartyIsOwnerOfLocation
+        - PartyIsOccupierOfLocation
+        - PartyIsAlliancePartnerOfLocation
+        - LocationIsContactPointAddressOfParty
+      type: string
+      description: 'Type of party location'
+    ContactPoint:
+      type: object
+      properties:
+        ContactPointType:
+          $ref: '#/components/schemas/Contactpointtypevalues'
+        PartyLocationType:
+          $ref: '#/components/schemas/Partylocationtypevalues'
+        LocationReference:
+          $ref: '#/components/schemas/Location'
+        PartyReference:
+          $ref: '#/components/schemas/Party'
+      description: The given email address
+    Politicalexposuretypevalues:
+      enum:
+        - Politicalexposureforeign
+        - Politicalexposuredomestic
+        - Nopoliticalexposure
+      type: string
+      description: 'Type of political exposure'
+    Partyinvolvementtypevalues:
+      enum:
+        - AgreementInvolvement
+        - PartyInvolvement
+        - ArrangementInvolvement
+        - DesignSpecificationInvolvement
+        - RelationshipInvolvement
+        - LocationInvolvement
+        - BankGuaranteeInvolvement
+      type: string
+      description: 'Type of party involvement'
+    Nameprefixtypevalues:
+      enum:
+        - Doctor
+        - Mister
+        - Miss
+        - Madam
+        - GenderNeutral
+      type: string
+      description: 'Type of name prefix'
+    PartyRole:
+      type: object
+      properties:
+        PartyRoleType:
+          type: string
+          description: ''
+          format: Text
+        PartyRoleName:
+          $ref: '#/components/schemas/Name'
+        PartyRoleValidityPeriod:
+          $ref: '#/components/schemas/Datetimeperiod'
+        PartyInvolvementType:
+          $ref: '#/components/schemas/Partyinvolvementtypevalues'
+      description: The specific role played by the identified officer/employee
+    Reference:
+      type: object
+      properties:
+        PartyLegalEntityReference:
+          $ref: '#/components/schemas/Party'
+        PartyNameSalutation:
+          $ref: '#/components/schemas/Nameprefixtypevalues'
+        GovernmentIssuedIdentityReference:
+          $ref: '#/components/schemas/Partyidentification'
+        GovernmentIssuedDocumentDetails:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartyDocument'
+        DocumentDirectoryEntryInstanceReference:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentDirectoryEntry'
+        ResidencyStatus:
+          $ref: '#/components/schemas/Status'
+        DateofBirth:
+          $ref: '#/components/schemas/Datetime'
+        Nationality:
+          $ref: '#/components/schemas/Country'
+        ResidentialAddress:
+          type: array
+          items:
+            $ref: '#/components/schemas/PostalAddress'
+        eMailAddress:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactPoint'
+        CellPhoneNumber:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactPoint'
+        SocialNetworkContacts:
+          $ref: '#/components/schemas/ContactPoint'
+        PoliticalExposureType:
+          $ref: '#/components/schemas/Politicalexposuretypevalues'
+        PoliticalExposureDescriptionRecord:
+          type: string
+          description: Detail of the customer's political exposure
+          format: Text
+        CorporateCustomerReference:
+          $ref: '#/components/schemas/Involvedparty'
+        CorporateCustomerLegalEntityReference:
+          $ref: '#/components/schemas/Involvedparty'
+        CorporateAddress:
+          type: array
+          items:
+            $ref: '#/components/schemas/PostalAddress'
+        CompanyOfficerReference:
+          $ref: '#/components/schemas/Involvedparty'
+        CompanyOfficerRole:
+          $ref: '#/components/schemas/PartyRole'
+        CustomerSinceDate:
+          $ref: '#/components/schemas/Datetime'
+        PartyFullLegalName:
+          $ref: '#/components/schemas/Name'
+        PartyLegalStructure:
+          $ref: '#/components/schemas/Partylegalstructuretypevalues'
+        PartyAddress:
+          type: array
+          items:
+            $ref: '#/components/schemas/PostalAddress'
+        PartyCountryOfResidence:
+          $ref: '#/components/schemas/Country'
+      description: 'Reference details for a customer directory entry'
+    PartyReferenceDataDirectoryEntry:
+      type: object
+      required:
+        - PartyType
+        - DirectoryEntryDateType
+        - DirectoryEntryDate
+      properties:
+        PartyReference:
+          $ref: '#/components/schemas/Party'
+        DirectoryEntryDateType:
+          $ref: '#/components/schemas/Directoryentrydatetypevalues'
+        DirectoryEntryDate:
+          $ref: '#/components/schemas/Datetime'
+        PartyType:
+          $ref: '#/components/schemas/Partytypevalues'
+      description: Capture and maintain reference information about some type of entitity within Party Reference Data Directory.
+    CorePartyProfile:
+      type: object
+      properties:
+        CorePartyProfileReference:
+          type: string
+        ProfileDetails:
+          $ref: '#/components/schemas/CorePartyProfileDetails'
+        PartyIdentification:
+          $ref: '#/components/schemas/PartyIdentificationValue'
+    Filter:
+      type: object
+      properties:
+        filters:
+          type: object
+          additionalProperties: true
+          description: 'Map of field path to value. Example: {"PartyReference.PartyName.FirstName": "Nihal", "PartyType": "Person"}'
+    DirectoryRecordDetails:
+      type: object
+      properties:
+        PartyReferenceDataDirectoryEntry:
+          $ref: '#/components/schemas/PartyReferenceDataDirectoryEntry'
+        Reference:
+          $ref: '#/components/schemas/Reference'
+        Demographics:
+          $ref: '#/components/schemas/Demographics'
+        Associations:
+          $ref: '#/components/schemas/Associations'
+        BankRelations:
+          $ref: '#/components/schemas/BankRelations'
+      description: ''
+    DirectoryRecord:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/DirectoryRecordDetails'
+        pagination:
+          type: object
+          properties:
+            nextToken:
+              type: string
+            pageSize:
+              type: integer
+              format: int32
+            hasMore:
+              type: boolean
+            totalCount:
+              type: integer
+              format: int64
+    Salutation:
+      type: object
+      properties:
+        PersonNamePrefix:
+          type: string
+          format: Datatype
+    EmailAddress:
+      type: object
+      properties:
+        EmailAddressValue:
+          type: string
+    MobileNumber:
+      type: object
+      properties:
+        MobileNumberType:
+          type: string
+        MobileNumberValue:
+          type: string
+    DateOfBirth:
+      type: object
+      properties:
+        DateOfBirth:
+          type: string
+    CorePartyCountry:
+      type: object
+      properties:
+        CountryName:
+          type: string
+    PartyIdentificationValue:
+      type: object
+      properties:
+        PartyIdentificationValue:
+          type: string
+    CorePartyProfileDetails:
+      type: object
+      properties:
+        PartyName:
+          $ref: '#/components/schemas/NameInformation'
+        PartyNameSalutation:
+          $ref: '#/components/schemas/Salutation'
+        PartyType:
+          type: string
+        EmailAddress:
+          $ref: '#/components/schemas/EmailAddress'
+        MobileNumber:
+          type: array
+          items:
+            $ref: '#/components/schemas/MobileNumber'
+        DateOfBirth:
+          $ref: '#/components/schemas/DateOfBirth'
+        Country:
+          $ref: '#/components/schemas/CorePartyCountry'
+        PartyIdentification:
+          $ref: '#/components/schemas/PartyIdentificationValue'
+        PartyStatus:
+          type: string
+        PartyProfileCreationDateTime:
+          $ref: '#/components/schemas/Datetime'
+  responses:
+    BadRequest:
+      description: BadRequest
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    NotFound:
+      description: NotFound
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+      description: TooManyRequests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+      description: InternalServerError
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    ServiceUnavailable:
+      description: ServiceUnavailable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    PartyReferenceDataDirectoryEntry:
+      description: PartyReferenceDataDirectoryEntry
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PartyReferenceDataDirectoryEntry'
+    Demographics:
+      description: Demographics
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Demographics'
+    Reference:
+      description: Reference
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Reference'
+    Associations:
+      description: Associations
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Associations'
+    BankRelations:
+      description: BankRelations
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BankRelations'
+    DirectoryRecord:
+      description: DirectoryRecord
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DirectoryRecord'
+    CorePartyProfile:
+      description: CorePartyProfile
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CorePartyProfile'
+  parameters:
+    pageToken:
+      name: pageToken
+      description: Token for next page (obtained from previous response)
+      in: query
+      required: false
+      schema:
+        type: string
+    pageSize:
+      name: pageSize
+      description: 'Number of results per page (default: 20, max: 100)'
+      in: query
+      required: false
+      schema:
+        type: integer
+        format: int32
+        default: 20
+    pagetoken:
+      name: pagetoken
+      description: Token for next page (obtained from previous response)
+      in: query
+      required: false
+      style: simple
+      schema:
+        type: string
+    pagesize:
+      name: pagesize
+      description: Number of results per page
+      in: query
+      required: false
+      style: simple
+      schema:
+        type: integer
+        format: int32
+    partyreferencedatadirectoryid:
+      name: partyreferencedatadirectoryid
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
+    party-reference-data-directory-id:
+      name: party-reference-data-directory-id
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
+    demographicsid:
+      name: demographicsid
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
+    referenceid:
+      name: referenceid
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
+    associationsid:
+      name: associationsid
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
+    bankrelationsid:
+      name: bankrelationsid
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
+  requestBodies:
+    PartyReferenceDataDirectoryEntry:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PartyReferenceDataDirectoryEntry'
+      required: true
+    Demographics:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Demographics'
+      required: true
+    Reference:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Reference'
+      required: true
+    Associations:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Associations'
+      required: true
+    BankRelations:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BankRelations'
+      required: true
+    DirectoryRecord:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Filter'
+      required: true
+    CorePartyProfile:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CorePartyProfile'
+      required: true

@@ -1,0 +1,80 @@
+extends: [["spectral:oas", recommended]]
+
+aliases:
+  # Target all operation IDs across the specification
+  OperationIds:
+    - $.paths[*][get,post,put,delete,patch].operationId
+
+rules:
+  # 1. ENFORCE BIAN GLOBAL ACTION TERMS IN OPERATION IDS
+  bian-action-term-naming:
+    description: "BIAN Operation IDs must end with or include a valid BIAN Action Term (e.g., Initiate, Execute, Request, Plan, Retrieve, Record)."
+    message: "The operationId '{{value}}' does not follow BIAN Action Term naming conventions."
+    severity: error
+    given: "#OperationIds"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^.*(Initiate|Execute|Request|Plan|Retrieve|Record|Update|Notify|Feedback|Exchange|Capture|Control|Evaluate|Register).*$"
+
+  # 2. ENFORCE SERVICE DOMAIN AND CONTROL RECORD SCHEMAS
+  bian-control-record-presence:
+    description: "Every BIAN API request body payload should map to a Control Record (CR) schema wrapper."
+    message: "BIAN APIs must encapsulate data objects within a documented Control Record structure."
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: "{{property}}"
+      function: pattern
+      functionOptions:
+        # Warns if no schemas are defined explicitly representing a Control Record
+        match: "^.*(ControlRecord|CR|Schema)$"
+
+  # 3. HTTP METHOD ALIGNMENT WITH BIAN ACTION TERMS
+  bian-http-method-get-retrieve:
+    description: "GET operations in BIAN specifications must explicitly represent a 'Retrieve' or 'Request' action."
+    message: "GET operations should use Retrieve or Request terms in their summary or operationId."
+    severity: error
+    given: $.paths[*].get
+    then:
+      field: operationId
+      function: pattern
+      functionOptions:
+        match: "^.*(Retrieve|Request|Query|Status|Notify).*$"
+
+  bian-http-method-post-initiate:
+    description: "POST operations usually correspond to 'Initiate', 'Execute', or 'Record' actions."
+    message: "POST operations should use Initiate, Execute, Record, or Create terms in their operationId."
+    severity: warn
+    given: $.paths[*].post
+    then:
+      field: operationId
+      function: pattern
+      functionOptions:
+        match: "^.*(Initiate|Execute|Record|Create|Upload|Evaluate).*$"
+
+  # 4. PATH STRUCTURE PATTERNS FOR BEHAVIOR QUALIFIERS (BQ)
+  bian-path-behavior-qualifier:
+    description: "BIAN standard API paths should explicitly route down to a functional Behavior Qualifier sub-resource."
+    message: "The path '{{property}}' does not follow the standard BIAN functional hierarchy structure /service-domain/{id}/behavior-qualifier."
+    severity: warn
+    given: $.paths
+    then:
+      field: "{{property}}"
+      function: pattern
+      functionOptions:
+        # Ensures structural compliance matching /service-domain/vX/{id}/behavior-qualifier
+        match: "^\/([a-zA-Z0-9_-]+)\/(v[0-9]+)\/([a-zA-Z0-9_-]+)(\/\{[a-zA-Z0-9_-]+\})?(\/[a-zA-Z0-9_-]+)?$"
+
+  # 5. MANDATORY X-BIAN CUSTOM METADATA HEADERS
+  bian-custom-header-versioning:
+    description: "BIAN operations require explicit versioning metadata tracking within parameters."
+    message: "Missing standard BIAN governance tracking fields in parameters."
+    severity: hint
+    given: $.paths[*][get,post,put,delete].parameters[*]
+    then:
+      field: name
+      function: pattern
+      functionOptions:
+        notMatch: "^(x-bian-.*)$"
+  operation-tag-defined: off

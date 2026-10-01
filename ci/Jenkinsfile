@@ -1,0 +1,2 @@
+@Library('finxglue-devops-shared-library') _
+schemaRegistryPipeline()
